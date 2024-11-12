@@ -1,5 +1,13 @@
 # Tensorflow Toxicity API using NodeJS/Express
 
+This is a toxicity API created in NodeJS/Express using [Tensorflow.js](https://www.tensorflow.org/js) and it's built-in toxicity model
+
+This project also uses OpenTelemetry with auto instrumentation. It sends OpenTelemetry to [Honeycomb.io](https://www.honeycomb.io/).
+
+If you want to disable this, delete or comment out this line in `index.js`:
+
+`require('./tracing.js');`
+
 ## Install
 
 * Check out code from repo
@@ -12,6 +20,15 @@ You can create a .env file with the following:
 ```
 API_KEY={{YOUR FRONT END API KEY}}
 PORT={{PORT TO RUN ON}}
+```
+
+add these for Honeycomb OpenTelemetry:
+
+```
+OTEL_SERVICE_NAME={{NAME OF YOUR HONEYCOMB SERVICE}}
+OTEL_EXPORTER_OTLP_PROTOCOL=http/protobuf
+OTEL_EXPORTER_OTLP_ENDPOINT="https://api.honeycomb.io"
+OTEL_EXPORTER_OTLP_HEADERS="x-honeycomb-team={{YOUR HOMEYCOMB API KEY}}"
 ```
 
 ## Run

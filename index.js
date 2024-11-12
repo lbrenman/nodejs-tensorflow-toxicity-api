@@ -1,5 +1,7 @@
 require('dotenv').config();
 
+require('./tracing.js');
+
 const express = require('express');
 const toxicity = require('@tensorflow-models/toxicity');
 const tf = require('@tensorflow/tfjs');

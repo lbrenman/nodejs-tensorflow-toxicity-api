@@ -10,6 +10,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@opentelemetry/auto-instrumentations-node": "^0.52.1",
     "@tensorflow-models/toxicity": "^1.2.2",
     "@tensorflow/tfjs": "^4.22.0",
     "dotenv": "^16.4.5",
