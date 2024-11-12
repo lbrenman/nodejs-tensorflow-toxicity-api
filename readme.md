@@ -2,7 +2,7 @@
 
 This is a toxicity API created in NodeJS/Express using [Tensorflow.js](https://www.tensorflow.org/js) and it's built-in toxicity model
 
-This project also uses OpenTelemetry with auto instrumentation. It sends OpenTelemetry to [Honeycomb.io](https://www.honeycomb.io/).
+This project also uses OpenTelemetry with auto and custom instrumentation. It sends OpenTelemetry to [Honeycomb.io](https://www.honeycomb.io/).
 
 If you want to disable this, delete or comment out this line in `index.js`:
 
