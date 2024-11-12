@@ -10,6 +10,16 @@ const app = express();
 const port = process.env.PORT || 3000;
 const apiKey = process.env.API_KEY;
 
+const opentelemetry = require("@opentelemetry/api");
+
+function handHostname(hostname) {
+  let activeSpan = opentelemetry.trace.getActiveSpan();
+  activeSpan.setAttribute("hostname_custom_attribute", hostname);
+}
+
+const tracer = opentelemetry.trace.getTracer("toxicity-api-tracer");
+
+
 // Middleware to parse JSON bodies
 app.use(express.json());
 
@@ -23,6 +33,13 @@ const authenticate = (req, res, next) => {
 
 app.post('/detect-toxicity', authenticate, async (req, res) => {
     const { sentences } = req.body;
+
+    const hostname = req.hostname;
+
+    tracer.startActiveSpan("hostname", (span) => {
+        handHostname(hostname);
+    span.end();
+    });
 
     if (!sentences || !Array.isArray(sentences)) {
         return res.status(400).send('Invalid input');
